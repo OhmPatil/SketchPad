@@ -2,7 +2,6 @@ const board = document.querySelector('.board')
 
 createBoard(document.querySelector('#size').value)
 
-
 function createBoard(size){
     board.style.gridTemplateColumns = `repeat(${size}, 1fr)`
     board.style.gridTemplateRows = `repeat(${size}, 1fr)`
@@ -23,12 +22,16 @@ function changeSize(){
         return false;
     }
 }
-
-changeSize()
+changeSize() //Watch for changes in grid size change form
 
 const pixels = document.querySelectorAll('.pixel')
-pixels.forEach(pixel => pixel.addEventListener('mouseover', () => pixel.setAttribute('style', 'background:black;')))
 
+// logic when 'black' button is pressed
+function black(){
+    pixels.forEach(pixel => pixel.addEventListener('mouseover', () => pixel.setAttribute('style', 'background:black;')))
+}
+
+// logic when 'reset' button is pressed
 function reset(){
     pixels.forEach(pixel => pixel.setAttribute('style', 'background:white'))
 }
