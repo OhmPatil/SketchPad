@@ -1,6 +1,6 @@
 const board = document.querySelector('.board')
 let color = 'black'
-let click = true
+let click = false
 // createBoard(16)
 
 function createBoard(size){
@@ -13,9 +13,9 @@ function createBoard(size){
     let total = size*size;
     for (let i=0; i<total; i++){
         let pixel = document.createElement('div')
-        pixel.style.background = 'red'
+        pixel.style.background = 'white'
         pixel.addEventListener('mouseover', draw)
-        pixel.classList.add('pixel')
+        pixel.classList.add('border')
         pixel.classList.add('pixelhover')
         board.appendChild(pixel)
     }
@@ -56,6 +56,16 @@ function changeClick(){
 function displayPenMode(){
     if (click) document.querySelector('.pen').innerHTML = '<h2>Pen: Enabled</h2>'
     else document.querySelector('.pen').innerHTML = '<h2>Pen: Disabled</h2>'
+}
+
+function promptForSize(){
+    let size = prompt("How many pixels per side? (Max: 100)")
+    if (size >= 2 && size <=100) {
+        createBoard(size)
+        displayPenMode()
+    }
+    else console.log('CRASH HONDA SI');
+
 }
 // logic when 'reset' button is pressed
 function reset(){

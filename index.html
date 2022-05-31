@@ -6,19 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-A-Sketch!</title>
     <script src="main.js" defer></script>
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="p-3 mb-2 bg-light bg-gradient text-black">
     <div class="container">
-        <div class="title"><h1>Etch-A-Sketch</h1></div>
-        <div class="pen"></div>
+        <div class="title"><h1><strong>SketchPad</strong></h1></div>
+        <div class="pen"><br><br></div>
         <div class="content">
-            <div class="board"></div>
-            <button onclick="changeColor('black')" class="btn btn-dark">Black</button>
-            <button onclick="changeColor('white')" class="btn btn-light">Eraser</button>
-            <button onclick="changeColor('random')" class="btn btn-info">Random</button>
-            <button onclick="reset()" class="btn btn-danger">Reset</button>
+            <div class="board shadow-lg p-3 mb-5 bg-body rounded"></div>
+            <div class="buttons">
+                <button onclick="changeColor('black')" class="btn btn-dark">Black</button>
+                <button onclick="changeColor('white')" class="btn btn-light ">Eraser</button>
+                <button onclick="changeColor('random')" class="btn btn-info">Random</button>
+                <button onclick="reset()" class="btn btn-danger">Clear</button>
+                <button class="btn btn-secondary" onclick="promptForSize()">Change size</button>
+
+            </div>
+            
         </div>
         <form>
             <input type="text" id="size" placeholder="Enter size in px..." class="form-control">
