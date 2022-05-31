@@ -1,7 +1,7 @@
 const board = document.querySelector('.board')
 let color = 'black'
-// createBoard(document.querySelector('#size').value)
-createBoard(16)
+let click = true
+// createBoard(16)
 
 function createBoard(size){
     let squares = board.querySelectorAll('div')
@@ -13,7 +13,7 @@ function createBoard(size){
     let total = size*size;
     for (let i=0; i<total; i++){
         let pixel = document.createElement('div')
-        // pixel.style.background = 'red'
+        pixel.style.background = 'red'
         pixel.addEventListener('mouseover', draw)
         pixel.classList.add('pixel')
         pixel.classList.add('pixelhover')
@@ -23,7 +23,11 @@ function createBoard(size){
 function changeSize(){
     document.querySelector('form').onsubmit = function(){
         let size = document.querySelector('#size').value
-        createBoard(size)
+        if (size >= 2 && size <=100) {
+            createBoard(size)
+            displayPenMode()
+        }
+        else console.log('CRASH HONDA SI');
         return false;
     }
 }
@@ -35,11 +39,26 @@ function changeColor(colorInput){
 }
 
 function draw(){
-    if (color === 'random') this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
-    else this.style.backgroundColor = color
+    if (click){
+        if (color === 'random') this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
+        else this.style.backgroundColor = color
+    }
+}
+
+document.querySelector('.board').addEventListener('click', changeClick)
+
+function changeClick(){
+    click = !click
+    if (click) document.querySelector('.pen').innerHTML = '<h2>Pen: Enabled</h2>'
+    else document.querySelector('.pen').innerHTML = '<h2>Pen: Disabled</h2>'
+}
+
+function displayPenMode(){
+    if (click) document.querySelector('.pen').innerHTML = '<h2>Pen: Enabled</h2>'
+    else document.querySelector('.pen').innerHTML = '<h2>Pen: Disabled</h2>'
 }
 // logic when 'reset' button is pressed
 function reset(){
-    if (document.querySelector('#size').value != '') createBoard(document.querySelector('#size').value)
-    else createBoard(16)
+    let squares = board.querySelectorAll('div')
+    squares.forEach(square => square.remove())
 }
