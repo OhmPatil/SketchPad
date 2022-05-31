@@ -49,13 +49,13 @@ document.querySelector('.board').addEventListener('click', changeClick)
 
 function changeClick(){
     click = !click
-    if (click) document.querySelector('.pen').innerHTML = '<h2>Pen: Enabled</h2>'
-    else document.querySelector('.pen').innerHTML = '<h2>Pen: Disabled (Click board to enable!)</h2>'
+    if (click) document.querySelector('.pen').innerHTML = '<h2>Pen ✏️: <strong><span style="color:#3fd100;">Enabled</span></strong> (Click board to disable!)</h2>'
+    else document.querySelector('.pen').innerHTML = '<h2>Pen ✏️: <strong><span style="color:red;">Disabled</span></strong> (Click board to enable!)</h2>'
 }
 
 function displayPenMode(){
-    if (click) document.querySelector('.pen').innerHTML = '<h2>Pen: Enabled</h2>'
-    else document.querySelector('.pen').innerHTML = '<h2>Pen: Disabled (Click board to enable!)</h2>'
+    if (click) document.querySelector('.pen').innerHTML = '<h2>Pen ✏️: <strong><span style="color:#3fd100;">Enabled</span></strong> (Click board to disable!)</h2>'
+    else document.querySelector('.pen').innerHTML = '<h2>Pen ✏️: <strong><span style="color:red;">Disabled</span></strong> (Click board to enable!)</h2>'
 }
 
 function promptForSize(){
