@@ -8,3 +8,7 @@
 .pixelhover:hover{
     border: 1px solid black;
 }
+
+button{
+    margin: 5px;
+}
