@@ -1,7 +1,7 @@
 const board = document.querySelector('.board')
-
+let color = 'black'
 // createBoard(document.querySelector('#size').value)
-// createBoard(16)
+createBoard(16)
 
 function createBoard(size){
     let squares = board.querySelectorAll('div')
@@ -13,10 +13,8 @@ function createBoard(size){
     let total = size*size;
     for (let i=0; i<total; i++){
         let pixel = document.createElement('div')
-        pixel.style.background = 'red'
-        pixel.addEventListener('mouseover', ()=>{
-            pixel.style.backgroundColor = 'black';
-        })
+        // pixel.style.background = 'red'
+        pixel.addEventListener('mouseover', draw)
         pixel.classList.add('pixel')
         pixel.classList.add('pixelhover')
         board.appendChild(pixel)
@@ -31,8 +29,17 @@ function changeSize(){
 }
 changeSize() //Watch for changes in grid size change form
 
+function changeColor(colorInput){
+    color = colorInput
+    console.log(color)
+}
 
+function draw(){
+    if (color === 'random') this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`
+    else this.style.backgroundColor = color
+}
 // logic when 'reset' button is pressed
 function reset(){
-    createBoard(document.querySelector('#size').value)
+    if (document.querySelector('#size').value != '') createBoard(document.querySelector('#size').value)
+    else createBoard(16)
 }
